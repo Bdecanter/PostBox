@@ -18,7 +18,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "commit": "git commit -a"
+    "commit": "git commit -a",
+    "push": "git push"
   },
   "eslintConfig": {
     "extends": "react-app"
