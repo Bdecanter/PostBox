@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { readAllPost } from '../actions'
+import { readAllPost, deletePost } from '../actions'
 import PostListItem from "../components/post-list-item"
+import { CSSTransition, TransitionGroup } from 'react-transition-group'
+import { Link } from 'react-router-dom'
 
 class PostList extends Component {
 
@@ -14,9 +16,18 @@ class PostList extends Component {
         const {posts} = this.props
         if(posts) {
             return posts.map((post) => {
-                return <PostListItem key={post.id} post={post}/>
+                return (
+                    <CSSTransition key={post.id} timeout={500} classNames="item">
+                        <PostListItem key={post.id} post={post} deletePostCallBack={(post) => this.deletePostCallBack(post)}/>
+                    </CSSTransition>
+                )
             })
         }
+    }
+
+    deletePostCallBack(post) {
+        console.log('delete', post)
+        this.props.deletePost(post.id)
     }
 
     render() {
@@ -24,6 +35,9 @@ class PostList extends Component {
         return (
             <div>
                 <h1 className="display-4">Listes des posts</h1>
+                <div className="button_add">
+                    <Link to={"create-post"}><button className="btn btn-primary btn-circle btn-lg">+</button></Link>
+                </div>
                 <table className="table table-hover tableau">
                     <thead>
                         <tr>
@@ -31,9 +45,12 @@ class PostList extends Component {
                             <th>Action</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        {this.renderPosts()}
-                    </tbody>
+                    <TransitionGroup component="tbody">
+                        
+                            {this.renderPosts()}
+                            
+                            
+                    </TransitionGroup>
                 </table>
             </div>
         )
@@ -47,7 +64,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-    ...bindActionCreators({readAllPost}, dispatch)
+    ...bindActionCreators({readAllPost, deletePost}, dispatch)
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostList);
