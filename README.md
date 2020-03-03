@@ -6,9 +6,7 @@
 
 React - React-dom - React-script - React-redux - Redux - Redux-thunk
 
-## API
+## DATA
 
-json-server : https://github.com/typicode/json-server
-
-
-
+**json-server** : https://github.com/typicode/json-server
+**Casual** : https://github.com/boo1ean/casual
