@@ -5,7 +5,8 @@
 ## HowTo ?
 
 Lancer le server JSONServer avec le fichier de config fillDB : json-server --watch fillDB.js<br/>
-Ce qui va peupler la base selon la config dans fillDB.js avec Casual
+Ce qui va peupler la base selon la config dans fillDB.js avec Casual<br/>
+L'API est disponible via http://localhost:3000
 
 ## Dépendances
 

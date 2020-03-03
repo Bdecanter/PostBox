@@ -7,7 +7,7 @@ export default function reducerPosts(state = [], action) {
 
         case ACTION_TYPES_POSTS.DELETE :
             return state.filter((post) => {
-                if(post.id == action.payload) {
+                if(post.id === action.payload) {
                     return false
                 }else{
                     return true
@@ -15,6 +15,8 @@ export default function reducerPosts(state = [], action) {
             })
         case ACTION_TYPES_POSTS.CREATE :
             return [...state, action.payload]
+
+        default:
+            return state
     }
-    return state
 }

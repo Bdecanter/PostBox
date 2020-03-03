@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom'
 
 class PostList extends Component {
 
-    componentDidMount() {
+    componentWillMount() {
         this.props.readAllPost()
     }
 
@@ -26,12 +26,10 @@ class PostList extends Component {
     }
 
     deletePostCallBack(post) {
-        console.log('delete', post)
         this.props.deletePost(post.id)
     }
 
     render() {
-        console.log(this.props.posts)
         return (
             <div>
                 <h1 className="display-4">Listes des posts</h1>
@@ -46,10 +44,7 @@ class PostList extends Component {
                         </tr>
                     </thead>
                     <TransitionGroup component="tbody">
-                        
-                            {this.renderPosts()}
-                            
-                            
+                            {this.renderPosts()}    
                     </TransitionGroup>
                 </table>
             </div>

@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Redirect, Route } from 'react-router-dom'
 import { createPost } from '../actions'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
