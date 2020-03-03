@@ -1,17 +1,39 @@
 import React, { Component } from 'react'
 import PostContent from '../components/post-content'
+import { connect } from 'react-redux'
+import {bindActionCreators} from "redux"
+import { readPost } from '../actions'
 
 class Post extends Component {
-    render() {
-        console.log(this.props)
-        
+    componentDidMount() {
+        this.props.readPost(this.props.match.params.id)
+        console.log('Mount : ' + this.props.match.params.id)
+    }
+    
+    renderPostContent() {
+        const {post} = this.props
+        if(post) {
+            return <PostContent post={post}/>
+        }
+    }
+
+    render() {     
         return (
             <div>
-                {this.props.match.params.id}
-                <PostContent/>
+                {this.renderPostContent()}
             </div>
         )
     }
 }
 
-export default Post;
+const mapStateToProps = (state) => {
+    return {
+        post: state.activePost
+    }
+}
+
+const mapDispatchToProps = (dispatch) => ({
+    ...bindActionCreators({readPost}, dispatch)
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Post)

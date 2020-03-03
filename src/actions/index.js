@@ -19,7 +19,7 @@ export function readPost(id) {
     }
 }
 
-export function deletePost() {
+export function deletePost(id) {
     return function(dispatch) {
         axios.delete(`${END_POINT}/posts/${id}`).then((response) => {
             dispatch({type: ACTION_TYPES_POSTS.DELETE, payload: id})

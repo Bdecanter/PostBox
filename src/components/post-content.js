@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 
-class PostContent extends Component {
-    render() {
+const PostContent = ({post}) => {
         return (
-            <div>Contenu d'un post</div>
+            <div>
+                <h2 className="display-4">{post.title}</h2>
+                <blockquote className="blockquote">
+                    <p className="{post.author}">{post.content}</p>
+                    <footer className="blockquote-footer">Auteur : <cite>{post.author}</cite></footer>
+                </blockquote>
+            </div>
         )
-    }
 }
 
 export default PostContent
