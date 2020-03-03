@@ -4,7 +4,7 @@
 
 ## Dépendances
 
-React - React-dom - React-script - React-redux - Redux - Redux-thunk
+React - React-dom - React-script - React-redux - Redux - Redux-thunk - React-router-dom - Axios
 
 ## DATA
 
