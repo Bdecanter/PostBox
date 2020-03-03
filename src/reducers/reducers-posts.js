@@ -13,6 +13,8 @@ export default function reducerPosts(state = [], action) {
                     return true
                 }
             })
+        case ACTION_TYPES_POSTS.CREATE :
+            return [...state, action.payload]
     }
     return state
 }

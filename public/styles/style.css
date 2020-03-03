@@ -34,5 +34,6 @@
 }
 
 .button_space {
-    padding-right: 15px;
+    margin-right: 15px;
+    width: 18%;
 }

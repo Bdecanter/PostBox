@@ -1,29 +1,32 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import { Redirect, Route } from 'react-router-dom'
+import { createPost } from '../actions'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import SimpleForm from '../components/create-post-form'
+
+
 
 class PostForm extends Component {
-    render() {
+    
+     render() {
+        
         return (
             <div>
                 <h1 className="display-4">Création d'un Post</h1>
-                <form>
-                    <div className="form-group">
-                        <label>Titre</label>
-                        <input className="form-control" type="text"/>
-                        <div></div>
-                        <label>Description</label>
-                        <input className="form-control" type="textarea"/>
-                        <div></div>
-                        <label>Auteur</label>
-                        <input className="form-control" type="text"/>
-                        <div></div>
-                    </div>
-                    <Link to={"/"} className="button_space"><button className="btn btn-danger">Retour</button></Link>
-                    <button type="submit" className="btn btn-primary">Créer</button>
-                </form>
+                <SimpleForm onSubmit={this.createPost.bind(this)} />
             </div>
         )
     }
+
+    createPost(values) {
+        this.props.createPost(values)
+        this.props.history.push('/')
+    }
 }
 
-export default PostForm;
+const mapDispatchToProps = (dispatch) => ({
+    ...bindActionCreators({createPost}, dispatch)
+})
+
+export default connect(null, mapDispatchToProps)(PostForm)
