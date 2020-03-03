@@ -1,6 +1,6 @@
-## Starter Kit React & Redux
+## PostBox
 
-**Projet de base pour mes dév React/Redux**
+**Nouveau Projet**
 
 ## Dépendances
 
